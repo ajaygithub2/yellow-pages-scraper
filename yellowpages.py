@@ -32,25 +32,28 @@ df = pd.DataFrame(df)
 print(f"Please wait while the data is collected for {search_for.replace('+',' ')} in {city.title().replace('+',' ')}, {state.upper()}")
 
 for pages in range(1,int(no_of_pages)+1):
-    html_text = requests.get(f'https://www.yellowpages.com/search?search_terms={search_for}&geo_location_terms={city}%2C+{state}&page={pages}').text
-    soup = BeautifulSoup(html_text, 'lxml')
-    listings = soup.find('div', class_ = 'search-results organic').find_all('div', class_ = 'result')
-    for index, listing in enumerate(listings):
-        try:
-            dealer_name = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-primary').h2.a.span.text
-            dealer_phone = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-secondary').find('div', class_ = 'phones phone primary').text
-            dealer_street_address = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-secondary').find('div', class_ = 'adr').find('div', class_ = 'street-address').text
-            dealer_locality = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-secondary').find('div', class_ = 'adr').find('div', class_ = 'locality').text
-            dealer_link = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-primary').h2.a.get('href')
-            
-            df.loc[len(df.index)] = [dealer_name, dealer_phone, f'{dealer_street_address}, {dealer_locality}',f'www.yellowpages.com{dealer_link}']
-                
-        except:
-            pass
-    if pages == 1:
-        print(f'{pages} page done...')
-    else:
-        print(f'{pages} pages done...')
+    try:
+      html_text = requests.get(f'https://www.yellowpages.com/search?search_terms={search_for}&geo_location_terms={city}%2C+{state}&page={pages}').text
+      soup = BeautifulSoup(html_text, 'lxml')
+      listings = soup.find('div', class_ = 'search-results organic').find_all('div', class_ = 'result')
+      for index, listing in enumerate(listings):
+          try:
+              dealer_name = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-primary').h2.a.span.text
+              dealer_phone = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-secondary').find('div', class_ = 'phones phone primary').text
+              dealer_street_address = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-secondary').find('div', class_ = 'adr').find('div', class_ = 'street-address').text
+              dealer_locality = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-secondary').find('div', class_ = 'adr').find('div', class_ = 'locality').text
+              dealer_link = listings[index].div.div.find('div', class_ ='info').find('div', class_ ='info-section info-primary').h2.a.get('href')
+              
+              df.loc[len(df.index)] = [dealer_name, dealer_phone, f'{dealer_street_address}, {dealer_locality}',f'www.yellowpages.com{dealer_link}']
+                  
+          except:
+              pass
+      if pages == 1:
+          print(f'{pages} page done...')
+      else:
+          print(f'{pages} pages done...')
+     except:
+      pass
 
 #converting to required format
 print('Creating your file...')
