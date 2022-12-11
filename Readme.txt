@@ -8,7 +8,8 @@ State : [Please enter only in abbreviation like TX or ME or CA etc.]
 No of pages to scrape : [Per page includes approx 30 records so if you enter 3 you will get around 90 records]
 Data Format : [Enter 1 for csv, 2 for xlsx, 3 for pdf]
 
-Note: CSV format is recommended
+Note: CSV format is recommended.
+Note: If you get less records, that means that more records aren't available on the site.
 
 
 Install these libraries:
