@@ -52,7 +52,7 @@ for pages in range(1,int(no_of_pages)+1):
           print(f'{pages} page done...')
       else:
           print(f'{pages} pages done...')
-     except:
+    except:
       pass
 
 #converting to required format
