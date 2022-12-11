@@ -1,3 +1,16 @@
+Through this script you will be able to scrape Name, Contact, Address and Link to the yellowpages page.
+
+When the script starts, it will ask for 5 inputs:
+
+Looking for : [Enter what you are looking for, like : doctors, dermatologist, bike repair, insurance, lawyer, accountant etc.]
+City : [City you want data for]
+State : [Please enter only in abbreviation like TX or ME or CA etc.]
+No of pages to scrape : [Per page includes approx 30 records so if you enter 3 you will get around 90 records]
+Data Format : [Enter 1 for csv, 2 for xlsx, 3 for pdf]
+
+Note: CSV format is recommended
+
+
 Install these libraries:
 
 1. Pandas : pip install pandas OR 
