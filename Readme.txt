@@ -31,3 +31,17 @@ Note: If you want your output in a pdf file, you will have to install an additio
       if not, then there is no need to install it.
 
 Run the script and enjoy. Thankyou.
+
+
+Yellow_pages_2.0.py :
+
+This is an updated version of 'yellowpages.py'.
+Updates:
+1. Scrapes emails and websites
+2. Shows status of pages scraped and listings scraped in those pages.
+3. Doesn't skip a page if a listing has missing info. (Only skips the listing)
+
+These updates involves reading one webpage per listing which makes it slower then previous version. 
+So if you don't need these 2 , I recommend using the previous version.
+
+Thankyou.
